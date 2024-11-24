@@ -142,8 +142,10 @@ class TransactionProcessor {
         // Send Telegram notifications if enabled
         if (config.SEND_TO_TG) {
             try {
+                await bot.sendMessage(config.CHAT_ID, `--- ${time} [BUY] ---`);
                 await bot.sendMessage(config.CHAT_ID, `[BUY] ${tokenMap[toEvt.addr].symbol} (${who})`);
                 await bot.sendMessage(config.CHAT_ID, toEvt.addr);
+                await bot.sendMessage(config.CHAT_ID, '');
             } catch (err) {
                 console.error('Telegram notification failed:', err.message);
             }
@@ -182,8 +184,10 @@ class TransactionProcessor {
         // Send Telegram notifications if enabled
         if (config.SEND_TO_TG) {
             try {
+                await bot.sendMessage(config.CHAT_ID, `--- ${time} [SELL] ---`);
                 await bot.sendMessage(config.CHAT_ID, `[SELL] ${tokenMap[fromEvt.addr].symbol} (${who})`);
                 await bot.sendMessage(config.CHAT_ID, fromEvt.addr);
+                await bot.sendMessage(config.CHAT_ID, '');
             } catch (err) {
                 console.error('Telegram notification failed:', err.message);
             }
