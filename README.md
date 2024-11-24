@@ -4,6 +4,8 @@
 
 fetch data from https://chain.fm/channel/1305381392003109041?eventKinds=token%3Abuy&eventKinds=token%3Asell
 
+( ![suibianwanwan's X account](https://x.com/bbbaaahhh200) )
+
 set TG related data to .config
 ### Installation
 ```sh
