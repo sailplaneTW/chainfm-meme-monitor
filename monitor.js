@@ -145,7 +145,7 @@ class TransactionProcessor {
                 await bot.sendMessage(config.CHAT_ID, `--- ${time} [BUY] ---`);
                 await bot.sendMessage(config.CHAT_ID, `[BUY] ${tokenMap[toEvt.addr].symbol} (${who})`);
                 await bot.sendMessage(config.CHAT_ID, toEvt.addr);
-                await bot.sendMessage(config.CHAT_ID, '');
+                await bot.sendMessage(config.CHAT_ID, '\t\t');
             } catch (err) {
                 console.error('Telegram notification failed:', err.message);
             }
@@ -187,7 +187,7 @@ class TransactionProcessor {
                 await bot.sendMessage(config.CHAT_ID, `--- ${time} [SELL] ---`);
                 await bot.sendMessage(config.CHAT_ID, `[SELL] ${tokenMap[fromEvt.addr].symbol} (${who})`);
                 await bot.sendMessage(config.CHAT_ID, fromEvt.addr);
-                await bot.sendMessage(config.CHAT_ID, '');
+                await bot.sendMessage(config.CHAT_ID, '\t\t');
             } catch (err) {
                 console.error('Telegram notification failed:', err.message);
             }
