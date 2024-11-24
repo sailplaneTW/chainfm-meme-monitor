@@ -6,19 +6,20 @@ set TG related data to .config
 ### Installation
 ```sh
 npm install node-telegram-bot-api axios
-node monitor.js
+node monitor.js 2>/dev/null
 ```
 
 ### Configuration
 
 fill tg related data to config.json (copy from config-example.json) file
->>> {
->>> "BOT_TOKEN":"xxxx", // get from tg
->>> "CHAT_ID":"xxxx", // get from tg
->>> "PER_BUY_LOWER_BOUND": 11.9, // the minimum spent for buying token
->>> "SEND_TO_TG": true // whether send msg to tg (or only in console)
->>>}
-
+```
+{
+  "BOT_TOKEN":"xxxx", // get from tg
+  "CHAT_ID":"xxxx", // get from tg
+  "PER_BUY_LOWER_BOUND": 11.9, // tacking orders that exceed this amount of SOL
+  "SEND_TO_TG": true // whether send msg to tg (or only in console)
+}
+```
 ### Tracking Scenario
 
 token:buy / token:sell
