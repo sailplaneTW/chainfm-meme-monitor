@@ -1,0 +1,6 @@
+{
+    "BOT_TOKEN": "get from tg",
+    "CHAT_ID": "get from tg",
+    "PER_BUY_LOWER_BOUND": 11.9,
+    "SEND_TO_TG": false
+}
