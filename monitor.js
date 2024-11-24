@@ -22,15 +22,24 @@ class ConfigManager {
      * Loads configuration from config.json file
      */
     loadConfig() {
-        const data = JSON.parse(fs.readFileSync('./config.json', { encoding: 'utf8' }));
-        this.config = {
-            DATA_API: data.DATA_API,
-            BOT_TOKEN: data.BOT_TOKEN,
-            CHAT_ID: data.CHAT_ID,
-            SEND_TO_TG: data.SEND_TO_TG,
-            PER_BUY_LOWER_BOUND: data.PER_BUY_LOWER_BOUND
-        };
-        this.bot = new TelegramBot(this.config.BOT_TOKEN, { polling: true });
+        try {
+            const data = JSON.parse(fs.readFileSync('./config.json', { encoding: 'utf8' }));
+            const oldConfig = { ...this.config };
+            this.config = {
+                DATA_API: data.DATA_API,
+                BOT_TOKEN: data.BOT_TOKEN,
+                CHAT_ID: data.CHAT_ID,
+                SEND_TO_TG: data.SEND_TO_TG,
+                PER_BUY_LOWER_BOUND: data.PER_BUY_LOWER_BOUND
+            };
+            if (JSON.stringify(oldConfig) !== JSON.stringify(this.config)) {
+                console.log('--- config update ---')
+                console.log(JSON.stringify(this.config, null, 4))
+            }
+            this.bot = new TelegramBot(this.config.BOT_TOKEN, { polling: true });
+        } catch (err) {
+            console.error('loadConfig fail !', JSON.stringify(err))
+        }
     }
 
     getConfig() {
