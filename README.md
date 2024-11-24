@@ -1,5 +1,7 @@
 # Meme Monitor TG Bot
 
+![suibianwanwan-meme-monitor.png](https://www.sam-huang.info/images/suibianwanwan-meme-monitor.png)
+
 fetch data from https://chain.fm/channel/1305381392003109041?eventKinds=token%3Abuy&eventKinds=token%3Asell
 
 set TG related data to .config
