@@ -236,7 +236,8 @@ class Monitor {
         try {
             const response = await axios.get(this.configManager.getConfig().DATA_API);
             const data = response.data[0].result.data.json.data;
-            const { parsedTransactions, addressLabelMap, tokenSymbolMap } = data;
+            const { parsedTransactions, renderContext } = data;
+            const { addressLabelMap, tokenSymbolMap } = renderContext;
 
             // Process each transaction
             for (const transaction of parsedTransactions) {
@@ -269,7 +270,7 @@ class Monitor {
                 console.log(`\x1b[1m${DateFormatter.getCurrentFormattedTime()}\x1b[0m`);
             }
         } catch (error) {
-            console.error('Monitor error:', error.message);
+            //console.error('Monitor error:', error.message);
         }
     }
 }
