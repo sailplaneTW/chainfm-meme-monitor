@@ -1,4 +1,5 @@
 {
+    "DATA_API": "chain.fm API",
     "BOT_TOKEN": "get from tg",
     "CHAT_ID": "get from tg",
     "PER_BUY_LOWER_BOUND": 11.9,

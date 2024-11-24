@@ -5,7 +5,6 @@ const fs = require('fs');
 
 // Global configuration constants
 const CONFIG = {
-    DATA_API: 'https://chain.fm/api/trpc/parsedTransaction.list?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22page%22%3A1%2C%22pageSize%22%3A25%2C%22eventKinds%22%3Anull%2C%22dateRange%22%3Anull%2C%22token%22%3Anull%2C%22address%22%3A%5B%5D%2C%22useFollowing%22%3Afalse%2C%22includeChannels%22%3A%5B%5D%2C%22channelIds%22%3A%5B%221305381392003109041%22%5D%7D%2C%22meta%22%3A%7B%22values%22%3A%7B%22eventKinds%22%3A%5B%22undefined%22%5D%2C%22dateRange%22%3A%5B%22undefined%22%5D%2C%22token%22%3A%5B%22undefined%22%5D%7D%7D%7D%7D',
     MONITOR_INTERVAL_MS: 2000,
     IGNORED_TRADER_ADDRS: []
 };
@@ -25,6 +24,7 @@ class ConfigManager {
     loadConfig() {
         const data = JSON.parse(fs.readFileSync('./config.json', { encoding: 'utf8' }));
         this.config = {
+            DATA_API: data.DATA_API,
             BOT_TOKEN: data.BOT_TOKEN,
             CHAT_ID: data.CHAT_ID,
             SEND_TO_TG: data.SEND_TO_TG,
@@ -225,7 +225,7 @@ class Monitor {
      */
     async monitor() {
         try {
-            const response = await axios.get(CONFIG.DATA_API);
+            const response = await axios.get(this.configManager.getConfig().DATA_API);
             const data = response.data[0].result.data.json.data;
             const { parsedTransactions, addressLabelMap, tokenSymbolMap } = data;
 
