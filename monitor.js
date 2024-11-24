@@ -251,8 +251,8 @@ class Monitor {
                 this.transactionProcessor.latestDataTime = parsedTransactions[0].block_time;
             }
 
-            // Print timestamp every minute
-            if (parseInt(Date.now() / 1000) % 60 === 0) {
+            // Print timestamp every 5 minutes
+            if (parseInt(Date.now() / 1000) % (5 * 60) === 0) {
                 console.log(`\x1b[1m${DateFormatter.getCurrentFormattedTime()}\x1b[0m`);
             }
         } catch (error) {
