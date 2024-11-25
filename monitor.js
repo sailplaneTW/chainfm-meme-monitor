@@ -143,7 +143,8 @@ class TransactionProcessor {
         this.trackingPair[tkey] = (this.trackingPair[tkey] ?? 0) + toEvt.amount;
 
         // Console logging
-        console.log(`\x1b[93m[buy]\t(${tokenMap[toEvt.addr].symbol}) ${who}  ${fromEvt.amount} ${tokenMap[fromEvt.addr].symbol} (${time})\x1b[0m`);
+        console.log(`\x1b[93m${time}\x1b[0m`);
+        console.log(`\x1b[93m[buy]\t(${tokenMap[toEvt.addr].symbol}) ${who}  ${fromEvt.amount} ${tokenMap[fromEvt.addr].symbol}\x1b[0m`);
         console.log(`\tbuy ${toEvt.amount} ${tokenMap[toEvt.addr].symbol}`);
         console.log(`\t[${toEvt.addr}]`);
         console.log('');
@@ -185,7 +186,8 @@ class TransactionProcessor {
         }
 
         // Console logging
-        console.log(`\x1b[34m[sell]\t(${tokenMap[fromEvt.addr].symbol}) ${who}  ${fromEvt.amount} (${time})\x1b[0m`);
+        console.log(`\x1b[34m(${time})\x1b[0m`);
+        console.log(`\x1b[34m[sell]\t(${tokenMap[fromEvt.addr].symbol}) ${who}  ${fromEvt.amount}\x1b[0m`);
         console.log(`\tgain ${fromEvt.amount} ${tokenMap[toEvt.addr].symbol}`);
         console.log(`\t[${fromEvt.addr}]`);
         console.log('');
