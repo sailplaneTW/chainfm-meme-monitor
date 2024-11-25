@@ -5,7 +5,7 @@ const fs = require('fs');
 
 // Global configuration constants
 const CONFIG = {
-    MONITOR_INTERVAL_MS: 2000,
+    MONITOR_INTERVAL_MS: 3000,
     IGNORED_TRADER_ADDRS: []
 };
 
@@ -143,7 +143,7 @@ class TransactionProcessor {
         this.trackingPair[tkey] = (this.trackingPair[tkey] ?? 0) + toEvt.amount;
 
         // Console logging
-        console.log(`\x1b[93m[buy]\t(${tokenMap[toEvt.addr].symbol}) ${who}  ${fromEvt.amount} SOL (${time})\x1b[0m`);
+        console.log(`\x1b[93m[buy]\t(${tokenMap[toEvt.addr].symbol}) ${who}  ${fromEvt.amount} ${tokenMap[fromEvt.addr].symbol} (${time})\x1b[0m`);
         console.log(`\tbuy ${toEvt.amount} ${tokenMap[toEvt.addr].symbol}`);
         console.log(`\t[${toEvt.addr}]`);
         console.log('');
@@ -167,7 +167,7 @@ class TransactionProcessor {
      * @param {Object} tokenMap - Token mapping data
      */
     async processSellOrder(order, tokenMap) {
-        const { who, whoAddr, fromEvt, time } = order;
+        const { who, whoAddr, fromEvt, time, toEvt } = order;
         const config = this.configManager.getConfig();
         const bot = this.configManager.getBot();
 
@@ -186,7 +186,7 @@ class TransactionProcessor {
 
         // Console logging
         console.log(`\x1b[34m[sell]\t(${tokenMap[fromEvt.addr].symbol}) ${who}  ${fromEvt.amount} (${time})\x1b[0m`);
-        console.log(`\tgain ${fromEvt.amount} SOL`);
+        console.log(`\tgain ${fromEvt.amount} ${tokenMap[toEvt.addr].symbol}`);
         console.log(`\t[${fromEvt.addr}]`);
         console.log('');
 
