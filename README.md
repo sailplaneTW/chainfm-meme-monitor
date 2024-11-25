@@ -1,6 +1,6 @@
 # Meme Monitor TG Bot
 
-![suibianwanwan-meme-monitor.png](https://www.sam-huang.info/images/suibianwanwan-meme-monitor.png)
+![suibianwanwan-meme-monitor.png](https://www.sam-huang.info/images/suibianwanwan-meme-monitor-2.png)
 
 fetch data from chain.fm
 eg. https://chain.fm/channel/1305381392003109041?eventKinds=token%3Abuy&eventKinds=token%3Asell from ( ![suibianwanwan's X account](https://x.com/bbbaaahhh200) )
